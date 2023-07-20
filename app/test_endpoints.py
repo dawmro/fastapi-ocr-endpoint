@@ -20,6 +20,23 @@ def test_invalid_file_upload_error():
     assert 'application/json' in response.headers['content-type']
 
 
+def test_prediction_upload():
+    img_saved_path = BASE_DIR / "images"
+    for path in img_saved_path.glob("*"):
+        try:
+            img = Image.open(path)
+        except:
+            img = None
+        response = client.post("/", files={"file": open(path, 'rb')})
+        if img is None:
+            assert response.status_code == 400
+        else:
+            # Returning a valid image
+            assert response.status_code == 200
+            data = response.json()
+            assert len(data.keys()) == 2
+
+
 def test_img_echo_upload():
     img_saved_path = BASE_DIR / "images"
 
