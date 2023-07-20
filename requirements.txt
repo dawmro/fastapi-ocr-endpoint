@@ -25,6 +25,7 @@ platformdirs==3.9.1
 pluggy==1.2.0
 pre-commit==3.3.3
 pydantic==1.10.11
+pytesseract==0.3.10
 pytest==7.4.0
 python-dotenv==1.0.0
 python-multipart==0.0.6

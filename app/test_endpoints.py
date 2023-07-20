@@ -14,11 +14,10 @@ def test_get_home():
     assert 'text/html' in response.headers['content-type']
 
 
-def test_post_home():
+def test_invalid_file_upload_error():
     response = client.post("/")
-    assert response.status_code == 200
+    assert response.status_code == 422
     assert 'application/json' in response.headers['content-type']
-    assert response.json() == {"hello": "world"}
 
 
 def test_img_echo_upload():
